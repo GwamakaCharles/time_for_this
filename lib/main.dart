@@ -7,52 +7,49 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeText();
-  }
-}
-
-class ChangeText extends StatefulWidget {
-  @override
-  _ChangeTextState createState() => _ChangeTextState();
-}
-
-class _ChangeTextState extends State<ChangeText> {
-  int _clicked = 0;
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            buttonClicked();
-          },
-          child: Icon(Icons.add),
-        ),
         appBar: AppBar(
-          title: Text('I Did It!'),
+          title: Text('Hello World Travel App'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'You clicked the button this many times.',
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                '$_clicked',
-                style: TextStyle(fontSize: 25),
-              )
-            ],
+        body: Builder(
+          builder: (context) => Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Hello World Travel'),
+                Text('Discover the world'),
+                Image(
+                  image: AssetImage('images/pimLogo640.png'),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                RaisedButton(
+                  onPressed: () => contactUs(context),
+                  child: Text('Contact Us'),
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+}
 
-  void buttonClicked() {
-    setState(() {
-      _clicked++;
-    });
-  }
+void contactUs(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text('Contact Us'),
+      content: Text('Mail us at hello@travel.co.tz'),
+      actions: [
+        FlatButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text('Close'),
+        )
+      ],
+    ),
+  );
 }

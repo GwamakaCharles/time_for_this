@@ -13,23 +13,37 @@ class MyApp extends StatelessWidget {
           title: Text('Hello World Travel App'),
         ),
         body: Builder(
-          builder: (context) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Hello World Travel'),
-                Text('Discover the world'),
-                Image(
-                  image: AssetImage('images/pimLogo640.png'),
+          builder: (context) => SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('Hello World Travel'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text('Discover the world'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Image(
+                        image: AssetImage('images/pimLogo640.png'),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    RaisedButton(
+                      onPressed: () => contactUs(context),
+                      child: Text('Contact Us'),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 24,
-                ),
-                RaisedButton(
-                  onPressed: () => contactUs(context),
-                  child: Text('Contact Us'),
-                )
-              ],
+              ),
             ),
           ),
         ),

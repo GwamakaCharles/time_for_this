@@ -7,6 +7,13 @@ class CountDownTimer {
   Timer timer;
   Duration _time;
   Duration _fullTime;
+  int work = 30;
+
+  void startWork() {
+    _radius = 1;
+    _time = Duration(minutes: this.work, seconds: 0);
+    _fullTime = _time;
+  }
 
 // return a stream of timermodel, decrementing the duration every second.
   Stream<TimerModel> stream() async* {

@@ -42,28 +42,32 @@ class TimerHomePage extends StatelessWidget {
                   padding: EdgeInsets.all(5),
                 ),
                 Expanded(
-                    child: ProductivityButton(
-                        color: Color(0xff009688),
-                        text: "Work",
-                        size: null,
-                        onPressed: emptyMethod)),
+                  child: ProductivityButton(
+                    color: Color(0xff009688),
+                    text: "Work",
+                    size: null,
+                    onPressed: () => timer.startWork(),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.all(5),
                 ),
                 Expanded(
                   child: ProductivityButton(
-                      color: Color(0xff607D8B),
-                      text: "Short Break",
-                      size: null,
-                      onPressed: emptyMethod),
+                    color: Color(0xff607D8B),
+                    text: "Short Break",
+                    size: null,
+                    onPressed: () => timer.startBreak(true),
+                  ),
                 ),
                 Padding(padding: EdgeInsets.all(5)),
                 Expanded(
                   child: ProductivityButton(
-                      color: Color(0xff455A64),
-                      text: "Long Break",
-                      size: null,
-                      onPressed: emptyMethod),
+                    color: Color(0xff455A64),
+                    text: "Long Break",
+                    size: null,
+                    onPressed: () => timer.startBreak(false),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(5),
@@ -124,5 +128,4 @@ class TimerHomePage extends StatelessWidget {
       }),
     );
   }
-
 }

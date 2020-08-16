@@ -15,6 +15,16 @@ class CountDownTimer {
     _fullTime = _time;
   }
 
+  void stopTimer() {
+    this._isActive = false;
+  }
+
+  void startTimer() {
+    if (_time.inSeconds > 0) {
+      this._isActive = true;
+    }
+  }
+
 // return a stream of timermodel, decrementing the duration every second.
   Stream<TimerModel> stream() async* {
     yield* Stream.periodic(Duration(seconds: 1), (int a) {

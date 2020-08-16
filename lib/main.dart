@@ -1,15 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hello_world/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'timer.dart';
+import 'timermodel.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+final CountDownTimer timer = CountDownTimer();
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    timer.startWork();
     return MaterialApp(
         title: 'My Work Timer',
         theme: ThemeData(primarySwatch: Colors.grey),
@@ -64,14 +71,24 @@ class TimerHomePage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: CircularPercentIndicator(
-                radius: availableWidth / 2,
-                lineWidth: 10,
-                percent: 1,
-                center:
-                    Text('30.00', style: Theme.of(context).textTheme.headline4),
-                progressColor: Color(0xff009688),
-              ),
+              child: StreamBuilder<Object>(
+                  initialData: '00:00',
+                  stream: timer.stream(),
+                  builder: (context, snapshot) {
+                    TimerModel timer = (snapshot.data == '00:00')
+                        ? TimerModel('00:00', 1)
+                        : snapshot.data;
+                    return Expanded(
+                      child: CircularPercentIndicator(
+                        radius: availableWidth / 2,
+                        lineWidth: 10,
+                        percent: timer.percent,
+                        center: Text(timer.time,
+                            style: Theme.of(context).textTheme.headline4),
+                        progressColor: Color(0xff009688),
+                      ),
+                    );
+                  }),
             ),
             Row(
               children: [

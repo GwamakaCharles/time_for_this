@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'settings.dart';
 import 'timer.dart';
 import 'timermodel.dart';
 
@@ -27,9 +28,26 @@ class MyApp extends StatelessWidget {
 class TimerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final List<PopupMenuItem<String>> menuItems = List<PopupMenuItem<String>>();
+    menuItems.add(
+      PopupMenuItem(
+        child: Text('Settings'),
+        value: 'Settings',
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text('My Work Timer'),
+        actions: [
+          PopupMenuButton<String>(
+            itemBuilder: (context) => menuItems.toList(),
+            onSelected: (s) {
+              if (s == 'Settings') {
+                goToSettings(context);
+              }
+            },
+          ),
+        ],
       ),
       body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {

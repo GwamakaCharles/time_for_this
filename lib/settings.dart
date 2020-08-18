@@ -131,4 +131,46 @@ class _SettingsState extends State<Settings> {
       txtLong.text = longBreak.toString();
     });
   }
+
+//updates settings values in Sharedprefs
+  void updateSettings(String key, int value) {
+    switch (key) {
+      case WORKTIME:
+        {
+          int workTime = prefs.getInt(WORKTIME);
+          workTime += value;
+          if (workTime >= 1 && workTime <= 180) {
+            prefs.setInt(WORKTIME, workTime);
+            setState(() {
+              txtWork.text = workTime.toString();
+            });
+          }
+        }
+        break;
+      case SHORTBREAK:
+        {
+          int short = prefs.getInt(SHORTBREAK);
+          short += value;
+          if (short >= 1 && short <= 120) {
+            prefs.setInt(SHORTBREAK, short);
+            setState(() {
+              txtShort.text = short.toString();
+            });
+          }
+        }
+        break;
+      case LONGBREAK:
+        {
+          int long = prefs.getInt(LONGBREAK);
+          long += value;
+          if (long >= 1 && long <= 180) {
+            prefs.setInt(LONGBREAK, long);
+            setState(() {
+              txtLong.text = long.toString();
+            });
+          }
+        }
+        break;
+    }
+  }
 }

@@ -119,6 +119,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 
+//reads values from SharedPrefs and writes in TextFields
   readSettings() async {
     prefs = await SharedPreferences.getInstance();
     int workTime = prefs.getInt(WORKTIME);

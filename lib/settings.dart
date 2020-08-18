@@ -27,6 +27,18 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  TextEditingController txtWork;
+  TextEditingController txtShort;
+  TextEditingController txtLong;
+
+  @override
+  void initState() {
+    TextEditingController txtWork = TextEditingController();
+    TextEditingController txtShort = TextEditingController();
+    TextEditingController txtLong = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = TextStyle(fontSize: 24);

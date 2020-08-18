@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'timermodel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CountDownTimer {
   double _radius = 1;
@@ -60,4 +61,13 @@ class CountDownTimer {
     String formattedTime = minutes + ":" + seconds;
     return formattedTime;
   }
+}
+
+Future readSettings() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  work = prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime');
+  shortBreak =
+      prefs.getInt('shortBreak') == null ? 30 : prefs.getInt('shortBreak');
+  longBreak =
+      prefs.getInt('longBreak') == null ? 30 : prefs.getInt('longBreak');
 }

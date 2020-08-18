@@ -18,7 +18,8 @@ class CountDownTimer {
     _fullTime = _time;
   }
 
-  void startWork() {
+  void startWork() async {
+    await readSettings();
     _radius = 1;
     _time = Duration(minutes: this.work, seconds: 0);
     _fullTime = _time;

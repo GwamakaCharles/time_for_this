@@ -30,6 +30,14 @@ class _SettingsState extends State<Settings> {
   TextEditingController txtWork;
   TextEditingController txtShort;
   TextEditingController txtLong;
+  
+  // constants to interact with the shared_preferences
+  static const String WORKTIME = "workTime";
+  static const String SHORTBREAK = "shortBreak";
+  static const String LONGBREAK = "longBreak";
+  int workTime;
+  int shortBreak;
+  int longBreak;
 
   @override
   void initState() {

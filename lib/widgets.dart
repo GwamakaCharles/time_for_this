@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+typedef CallbackSetting = void Function(String, int);
+
 class ProductivityButton extends StatelessWidget {
   final Color color;
   final String text;

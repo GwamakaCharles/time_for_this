@@ -63,6 +63,7 @@ class CountDownTimer {
   }
 }
 
+//read settings from shared prefs
 Future readSettings() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   work = prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime');

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'widgets.dart';
 
@@ -30,7 +31,7 @@ class _SettingsState extends State<Settings> {
   TextEditingController txtWork;
   TextEditingController txtShort;
   TextEditingController txtLong;
-  
+
   // constants to interact with the shared_preferences
   static const String WORKTIME = "workTime";
   static const String SHORTBREAK = "shortBreak";
@@ -38,6 +39,8 @@ class _SettingsState extends State<Settings> {
   int workTime;
   int shortBreak;
   int longBreak;
+
+  SharedPreferences prefs;
 
   @override
   void initState() {

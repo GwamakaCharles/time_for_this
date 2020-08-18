@@ -32,7 +32,7 @@ class _SettingsState extends State<Settings> {
   TextEditingController txtShort;
   TextEditingController txtLong;
 
-  // constants to interact with the shared_preferences
+  // constants to interact with the shared_preferences {key:'value'}
   static const String WORKTIME = "workTime";
   static const String SHORTBREAK = "shortBreak";
   static const String LONGBREAK = "longBreak";
@@ -117,5 +117,17 @@ class _SettingsState extends State<Settings> {
         padding: const EdgeInsets.all(20),
       ),
     );
+  }
+
+  readSettings() async {
+    prefs = await SharedPreferences.getInstance();
+    int workTime = prefs.getInt(WORKTIME);
+    int shortBreak = prefs.getInt(SHORTBREAK);
+    int longBreak = prefs.getInt(LONGBREAK);
+    setState(() {
+      txtWork.text = workTime.toString();
+      txtShort.text = shortBreak.toString();
+      txtLong.text = longBreak.toString();
+    });
   }
 }

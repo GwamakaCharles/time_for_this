@@ -55,6 +55,7 @@ class _SettingsState extends State<Settings> {
           Text(""),
           SettingsButton(Color(0xff455A64), "-", -1),
           TextField(
+              controller: txtWork,
               style: textStyle,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number),
@@ -75,6 +76,7 @@ class _SettingsState extends State<Settings> {
             -1,
           ),
           TextField(
+              controller: txtShort,
               style: textStyle,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number),
@@ -91,6 +93,7 @@ class _SettingsState extends State<Settings> {
             -1,
           ),
           TextField(
+              controller: txtLong,
               style: textStyle,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number),

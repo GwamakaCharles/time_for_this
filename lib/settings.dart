@@ -47,6 +47,7 @@ class _SettingsState extends State<Settings> {
     TextEditingController txtWork = TextEditingController();
     TextEditingController txtShort = TextEditingController();
     TextEditingController txtLong = TextEditingController();
+    readSettings();
     super.initState();
   }
 

@@ -62,14 +62,14 @@ class CountDownTimer {
     String formattedTime = minutes + ":" + seconds;
     return formattedTime;
   }
-}
 
-//read settings from shared prefs
-Future readSettings() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  work = prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime');
-  shortBreak =
-      prefs.getInt('shortBreak') == null ? 30 : prefs.getInt('shortBreak');
-  longBreak =
-      prefs.getInt('longBreak') == null ? 30 : prefs.getInt('longBreak');
+  //read settings from shared prefs
+  Future readSettings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    work = prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime');
+    shortBreak =
+        prefs.getInt('shortBreak') == null ? 30 : prefs.getInt('shortBreak');
+    longBreak =
+        prefs.getInt('longBreak') == null ? 30 : prefs.getInt('longBreak');
+  }
 }

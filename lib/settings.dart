@@ -15,12 +15,12 @@ class SettingsScreen extends StatelessWidget {
   }
 }
 
-void goToSettings(BuildContext context) => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SettingsScreen(),
-      ),
-    );
+// void goToSettings(BuildContext context) => Navigator.push(
+//       context,
+//       MaterialPageRoute(
+//         builder: (context) => SettingsScreen(),
+//       ),
+//     );
 
 class Settings extends StatefulWidget {
   @override
@@ -44,9 +44,9 @@ class _SettingsState extends State<Settings> {
 
   @override
   void initState() {
-    TextEditingController txtWork = TextEditingController();
-    TextEditingController txtShort = TextEditingController();
-    TextEditingController txtLong = TextEditingController();
+    txtWork = TextEditingController();
+    txtShort = TextEditingController();
+    txtLong = TextEditingController();
     readSettings();
     super.initState();
   }
@@ -111,24 +111,35 @@ class _SettingsState extends State<Settings> {
 
     int workTime = prefs.getInt(WORKTIME);
     if (workTime == null) {
-      await prefs.setInt(WORKTIME, int.parse('30'));
+      await prefs.setInt(
+        WORKTIME,
+        int.parse('30'),
+      );
     }
 
     int shortBreak = prefs.getInt(SHORTBREAK);
     if (shortBreak == null) {
-      await prefs.setInt(SHORTBREAK, int.parse('5'));
+      await prefs.setInt(
+        SHORTBREAK,
+        int.parse('5'),
+      );
     }
 
     int longBreak = prefs.getInt(LONGBREAK);
     if (longBreak == null) {
-      await prefs.setInt(LONGBREAK, int.parse('20'));
+      await prefs.setInt(
+        LONGBREAK,
+        int.parse('20'),
+      );
     }
 
-    setState(() {
-      txtWork.text = workTime.toString();
-      txtShort.text = shortBreak.toString();
-      txtLong.text = longBreak.toString();
-    });
+    setState(
+      () {
+        txtWork.text = workTime.toString();
+        txtShort.text = shortBreak.toString();
+        txtLong.text = longBreak.toString();
+      },
+    );
   }
 
 //updates settings values in Sharedprefs
@@ -140,9 +151,11 @@ class _SettingsState extends State<Settings> {
           workTime += value;
           if (workTime >= 1 && workTime <= 180) {
             prefs.setInt(WORKTIME, workTime);
-            setState(() {
-              txtWork.text = workTime.toString();
-            });
+            setState(
+              () {
+                txtWork.text = workTime.toString();
+              },
+            );
           }
         }
         break;
@@ -152,9 +165,11 @@ class _SettingsState extends State<Settings> {
           short += value;
           if (short >= 1 && short <= 120) {
             prefs.setInt(SHORTBREAK, short);
-            setState(() {
-              txtShort.text = short.toString();
-            });
+            setState(
+              () {
+                txtShort.text = short.toString();
+              },
+            );
           }
         }
         break;
@@ -164,9 +179,11 @@ class _SettingsState extends State<Settings> {
           long += value;
           if (long >= 1 && long <= 180) {
             prefs.setInt(LONGBREAK, long);
-            setState(() {
-              txtLong.text = long.toString();
-            });
+            setState(
+              () {
+                txtLong.text = long.toString();
+              },
+            );
           }
         }
         break;
